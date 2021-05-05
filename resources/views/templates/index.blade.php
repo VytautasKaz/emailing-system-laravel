@@ -15,7 +15,7 @@
             @foreach ($templates as $template)
                 <tr>
                     <td>{{ $template->subject }}</td>
-                    <td>{{ $template->content }}</td>
+                    <td>{!! $template->content !!}</td>
                     <td>
                         <form action="{{ route('templates.destroy', $template->id) }}" method="POST">
                             <a class="btn btn-success" href="{{ route('templates.edit', $template->id) }}">Edit</a>

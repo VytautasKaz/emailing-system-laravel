@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Content:</label>
-                                <textarea class="form-control" name="content" id="" cols="30" rows="10"
+                                <textarea class="form-control" name="content" id="mce" cols="30" rows="10"
                                     required>{{ $template->content }}</textarea>
                                 @error('content')
                                     <div class="alert alert-danger">{{ $message }}</div>

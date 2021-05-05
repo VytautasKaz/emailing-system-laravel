@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Content:</label><br>
-                                <textarea class="form-control" name="content" id="" cols="30" rows="10"></textarea>
+                                <textarea class="form-control" name="content" id="mce" cols="30" rows="10"></textarea>
                                 @error('content')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
