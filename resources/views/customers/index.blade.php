@@ -20,7 +20,7 @@
         @endif
         <table class="table">
             <tr>
-                <th></th>
+                <th><input type="checkbox" id="" name="checkbox-send-all"></th>
                 <th>Username</th>
                 <th>E-mail</th>
                 <th>Category</th>
@@ -28,11 +28,18 @@
             </tr>
             @foreach ($customers as $customer)
                 <tr>
-                    <td><input type="checkbox" id="" name="send" value="{{ $customer->id }}"></td>
+                    <td><input type="checkbox" id="" name="checkbox-send" value="{{ $customer->id }}"></td>
                     <td>{{ $customer->username }}</td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->tag['tag'] }}</td>
                     <td>
+                        <form action="" method="POST">
+                            @csrf
+                            <input type="hidden" name="customer_username" value="{{ $customer->username }}">
+                            <input type="hidden" name="customer_email" value="{{ $customer->email }}">
+                            <button name="send_btn" style="float: left; margin-right: 5px" type="submit"
+                                class="btn btn-outline-primary">Send</button>
+                        </form>
                         <form action="{{ route('customers.destroy', $customer->id) }}" method="POST">
                             <a class="btn btn-success" href="{{ route('customers.edit', $customer->id) }}">Edit</a>
                             @csrf @method('delete')
