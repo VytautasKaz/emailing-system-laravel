@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TemplateController;
-use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +22,6 @@ Route::get('/', function () {
 
 Route::resource('customers', CustomerController::class);
 Route::resource('templates', TemplateController::class);
-Route::resource('tags', TagController::class);
 
 Auth::routes();
 
