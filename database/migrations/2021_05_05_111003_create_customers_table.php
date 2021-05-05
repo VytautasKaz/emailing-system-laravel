@@ -15,8 +15,13 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email');
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->unsignedBigInteger('tag_id')->nullable();
+            $table->foreign('tag_id')
+                ->references('id')->on('tags')
+                ->onDelete('SET NULL')
+                ->onUpdate('restrict');
             $table->timestamps();
         });
     }
