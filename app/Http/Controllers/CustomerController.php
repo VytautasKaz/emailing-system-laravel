@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -12,9 +13,14 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('customers.index', ['customers' => Customer::orderBy('username')->get()]);
+        if (isset($request->tag_id) && $request->tag_id !== 0)
+            $customers = Customer::where('tag_id', $request->tag_id)->orderBy('tag_id')->get();
+        else
+            $customers = Customer::orderBy('username')->get();
+
+        return view('customers.index', ['customers' => $customers, 'tags' => Tag::orderBy('tag')->get()]);
     }
 
     /**
@@ -24,7 +30,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create', ['tags' => Tag::orderBy('tag')->get()]);
     }
 
     /**
@@ -35,7 +41,17 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'username' => 'required|max:32',
+            'email' => 'required|max:64',
+        ]);
+
+        $customer = new Customer();
+        $customer->fill($request->all());
+        $customer->save();
+        return ($customer->save() == 1)
+            ? redirect()->route('customers.index')->with('status_success', 'Customer added successfully!')
+            : redirect()->route('customers.index')->with('status_error', 'Customer addition failed.');
     }
 
     /**
@@ -57,7 +73,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers.edit', ['customer' => $customer, 'tags' => Tag::orderBy('tag')->get()]);
     }
 
     /**
@@ -69,7 +85,15 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $this->validate($request, [
+            'username' => 'required|unique:customers,username,' . $customer->id . ',id',
+            'email' => 'required|max:64|unique:customers,email,' . $customer->id . ',id',
+        ]);
+
+        $customer->fill($request->all());
+        return ($customer->save() == 1)
+            ? redirect()->route('customers.index')->with('status_success', 'Customer information updated successfully!')
+            : redirect()->route('customers.index')->with('status_error', 'Customer information update failed.');
     }
 
     /**
@@ -80,6 +104,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return redirect()->route('customers.index')->with('status_success', 'Customer removed from the database successfully!');
     }
 }
