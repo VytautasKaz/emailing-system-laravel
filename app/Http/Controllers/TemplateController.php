@@ -24,7 +24,7 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.create');
     }
 
     /**
@@ -35,7 +35,17 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'subject' => 'required|max:60',
+            'content' => 'required',
+        ]);
+
+        $customer = new Template();
+        $customer->fill($request->all());
+        $customer->save();
+        return ($customer->save() == 1)
+            ? redirect()->route('templates.index')->with('status_success', 'Template created successfully!')
+            : redirect()->route('templates.index')->with('status_error', 'Template creation failed.');
     }
 
     /**
@@ -57,7 +67,7 @@ class TemplateController extends Controller
      */
     public function edit(Template $template)
     {
-        //
+        return view('templates.edit', ['template' => $template]);
     }
 
     /**
@@ -69,7 +79,15 @@ class TemplateController extends Controller
      */
     public function update(Request $request, Template $template)
     {
-        //
+        $this->validate($request, [
+            'subject' => 'required',
+            'content' => 'required',
+        ]);
+
+        $template->fill($request->all());
+        return ($template->save() == 1)
+            ? redirect()->route('templates.index')->with('status_success', 'Template updated successfully!')
+            : redirect()->route('templates.index')->with('status_error', 'Template update failed.');
     }
 
     /**
@@ -80,6 +98,7 @@ class TemplateController extends Controller
      */
     public function destroy(Template $template)
     {
-        //
+        $template->delete();
+        return redirect()->route('templates.index')->with('status_success', 'Template removed successfully!');
     }
 }
