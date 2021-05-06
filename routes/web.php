@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/preview', [CustomerController::class, 'preview'])->name('customers.preview');
 Route::resource('customers', CustomerController::class);
 Route::resource('templates', TemplateController::class);
 

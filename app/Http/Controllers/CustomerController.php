@@ -108,4 +108,9 @@ class CustomerController extends Controller
         $customer->delete();
         return redirect()->route('customers.index')->with('status_success', 'Customer removed from the database successfully!');
     }
+
+    public function preview()
+    {
+        return view('customers.preview', ['templates' => Template::all()]);
+    }
 }

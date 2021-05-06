@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header">Send an e-mail to:</div>
                     <div class="card-body">
-                        <form action="" method="GET">
+                        <form action="{{ route('customers.preview') }}" method="GET">
                             @csrf
                             <input type="hidden" name="customer_username" value="{{ $customer->username }}">
                             <input type="hidden" name="customer_email" value="{{ $customer->email }}">
