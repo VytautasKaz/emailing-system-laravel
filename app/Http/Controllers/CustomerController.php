@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Tag;
+use App\Models\Template;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -62,7 +63,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('customers.show', ['customer' => $customer, 'templates' => Template::orderBy('subject')->get()]);
     }
 
     /**

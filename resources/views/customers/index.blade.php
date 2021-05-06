@@ -33,7 +33,7 @@
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->tag['tag'] }}</td>
                     <td>
-                        <form action="" method="POST">
+                        <form action="{{ route('customers.show', $customer->id) }}" method="GET">
                             @csrf
                             <input type="hidden" name="customer_username" value="{{ $customer->username }}">
                             <input type="hidden" name="customer_email" value="{{ $customer->email }}">
