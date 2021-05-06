@@ -23,7 +23,7 @@
                                 @foreach ($templates as $template)
                                     @if ($template->id == $_GET['template_id'])
                                         <textarea style="width: 100%;" name="" id="mce" cols="30"
-                                            rows="10">{{ $template->content }}</textarea>
+                                            rows="10"><p>Hello, {{ $_GET['customer_username'] }}!</p><br> {{ $template->content }}</textarea>
                                     @endif
                                 @endforeach
                             </div>
