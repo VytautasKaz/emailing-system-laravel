@@ -20,7 +20,7 @@
         @endif
         <table class="table">
             <tr>
-                <th><input type="checkbox" id="" name="checkbox-send-all"></th>
+                <th><input type="checkbox" onClick="toggle(this)"></th>
                 <th>Username</th>
                 <th>E-mail</th>
                 <th>Category</th>
@@ -28,7 +28,7 @@
             </tr>
             @foreach ($customers as $customer)
                 <tr>
-                    <td><input type="checkbox" id="" name="checkbox-send" value="{{ $customer->id }}"></td>
+                    <td><input type="checkbox" name="checkbox-send" value="{{ $customer->id }}"></td>
                     <td>{{ $customer->username }}</td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->tag['tag'] }}</td>
