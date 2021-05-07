@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\TemplateController;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/preview', [CustomerController::class, 'preview'])->name('customers.preview');
+Route::get('/test-email', [MailController::class, 'sendEmail'])->name('test-email');
 Route::resource('customers', CustomerController::class);
 Route::resource('templates', TemplateController::class);
 

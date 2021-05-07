@@ -6,7 +6,10 @@
                 <div class="card">
                     <div class="card-header">E-mail preview</div>
                     <div class="card-body">
-                        <form>
+                        <form action="{{ route('test-email') }}" method="GET">
+                            @csrf
+                            <input type="hidden" name="customer_username" value="{{ $_GET['customer_username'] }}">
+                            <input type="hidden" name="customer_email" value="{{ $_GET['customer_email'] }}">
                             <div class="form-group">
                                 <label for="">To:</label>
                                 <p>{{ $_GET['customer_email'] }}</p>
@@ -15,14 +18,15 @@
                                 <label>Subject:</label><br>
                                 @foreach ($templates as $template)
                                     @if ($template->id == $_GET['template_id'])
-                                        <input style="width: 100%;" type="text" value="{{ $template->subject }}">
+                                        <input style="width: 100%;" name="email_subject" type="text"
+                                            value="{{ $template->subject }}">
                                     @endif
                                 @endforeach
                             </div>
                             <div class="form-group">
                                 @foreach ($templates as $template)
                                     @if ($template->id == $_GET['template_id'])
-                                        <textarea style="width: 100%;" name="" id="mce" cols="30"
+                                        <textarea style="width: 100%;" name="email_content" id="mce" cols="30"
                                             rows="10"><p>Hello, {{ $_GET['customer_username'] }}!</p><br> {{ $template->content }}</textarea>
                                     @endif
                                 @endforeach
