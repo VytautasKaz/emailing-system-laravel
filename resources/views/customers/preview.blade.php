@@ -15,7 +15,7 @@
                                 <label>Subject:</label><br>
                                 @foreach ($templates as $template)
                                     @if ($template->id == $_GET['template_id'])
-                                        <input type="text" value="{{ $template->subject }}">
+                                        <input style="width: 100%;" type="text" value="{{ $template->subject }}">
                                     @endif
                                 @endforeach
                             </div>
