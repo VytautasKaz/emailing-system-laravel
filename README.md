@@ -25,6 +25,7 @@ Only works if **php artisan db:seed** step was not skipped.
 
 -   E-mail sending functionality tested with [mailtrap](https://mailtrap.io/).
 -   Checkboxes and "Send To Selected" button in the customers page do not function at the moment.
+-   Date and time selection of e-mail delivery in e-mail preview page is only visual (non-functioning) at the moment.
 
 ## Author:
 
