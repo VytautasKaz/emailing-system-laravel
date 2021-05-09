@@ -19,11 +19,12 @@
 E-mail: admin@admin.com <br>
 Password: 123456789
 
-**Note:** Only works if **php artisan db:seed** step was not skipped.
+Only works if **php artisan db:seed** step was not skipped.
 
 ## Notes:
 
-E-mail sending functionality tested with [mailtrap](https://mailtrap.io/).
+-   E-mail sending functionality tested with [mailtrap](https://mailtrap.io/).
+-   Checkboxes and "Send To Selected" button in the customers page do not function at the moment.
 
 ## Author:
 
