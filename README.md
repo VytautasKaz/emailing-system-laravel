@@ -21,6 +21,10 @@ Password: 123456789
 
 **Note:** Only works if **php artisan db:seed** step was not skipped.
 
+## Notes:
+
+E-mail sending functionality tested with (https://mailtrap.io/).
+
 ## Author:
 
 [Vytautas K.](https://github.com/VytautasKaz)
