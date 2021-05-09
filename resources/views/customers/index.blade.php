@@ -13,6 +13,12 @@
                 <a class="btn btn-success" href={{ route('customers.index') }}>Show All</a>
             </form>
         </div>
+        <form action="#">
+            <button name="send_btn" style="float: left; margin-right: 5px" type="submit"
+                class="btn btn-outline-primary">Send all</button>
+        </form>
+        <br>
+        <br>
         @if (session('status_success'))
             <p style="color: green"><b>{{ session('status_success') }}</b></p>
         @else
@@ -20,7 +26,9 @@
         @endif
         <table class="table">
             <tr>
-                <th><input type="checkbox" onClick="toggle(this)"></th>
+                <th>
+                    <form action="#"><input type="checkbox" onClick="toggle(this)"></form>
+                </th>
                 <th>Username</th>
                 <th>E-mail</th>
                 <th>Category</th>
@@ -28,7 +36,9 @@
             </tr>
             @foreach ($customers as $customer)
                 <tr>
-                    <td><input type="checkbox" name="checkbox-send" value="{{ $customer->id }}"></td>
+                    <td>
+                        <form action=""><input type="checkbox" name="checkbox-send" value="{{ $customer->id }}"></form>
+                    </td>
                     <td>{{ $customer->username }}</td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->tag['tag'] }}</td>
