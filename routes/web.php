@@ -21,10 +21,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/preview', [CustomerController::class, 'preview'])->name('customers.preview');
-Route::get('/test-email', [MailController::class, 'sendEmail'])->name('test-email');
-Route::resource('customers', CustomerController::class);
-Route::resource('templates', TemplateController::class);
+// Route::get('/preview', [CustomerController::class, 'preview'])->name('customers.preview');
+// Route::get('/test-email', [MailController::class, 'sendEmail'])->name('test-email');
+// Route::resource('customers', CustomerController::class);
+// Route::resource('templates', TemplateController::class);
 
 Auth::routes(['register' => false]);
 
