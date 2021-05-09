@@ -34,6 +34,6 @@ class MailTemplate extends Mailable
      */
     public function build()
     {
-        return $this->from('<placeholder@email.com>', 'example')->subject($this->subject)->view('mail.emailTemplate', ['recipient_username' => $this->recipient, ['mail_content' => $this->content]]);
+        return $this->from('placeholder@email.com', 'example')->subject($this->subject)->view('mail.emailTemplate');
     }
 }

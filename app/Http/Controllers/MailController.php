@@ -11,7 +11,6 @@ class MailController extends Controller
 {
     public function sendEmail(Request $request)
     {
-        // dd($_GET);
         $recipient = $request->customer_username;
         $email = $request->customer_email;
         $subject = $request->email_subject;
