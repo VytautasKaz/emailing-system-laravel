@@ -18,6 +18,6 @@ class MailController extends Controller
 
         Mail::to($email)->send(new MailTemplate($recipient, $subject, $content));
 
-        return redirect()->route('customers.index')->with('status_success', 'E-mail sent successfully!');
+        return redirect()->route('customers.index')->with('status_success', "E-mail to $recipient sent successfully!");
     }
 }
