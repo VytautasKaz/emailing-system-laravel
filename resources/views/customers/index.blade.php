@@ -13,9 +13,9 @@
                 <a class="btn btn-success" href={{ route('customers.index') }}>Show All</a>
             </form>
         </div>
-        <form action="#">
+        <form action="#" method="">
             <button name="send_btn" style="float: left; margin-right: 5px" type="submit"
-                class="btn btn-outline-primary">Send all</button>
+                class="btn btn-outline-primary">Send To Selected</button>
         </form>
         <br>
         <br>
