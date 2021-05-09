@@ -1,5 +1,3 @@
-Login needed to access app's features.
-
 ## Launch instructions:
 
 -   If you do not have composer installed on your system, install it (installation instructions [here](https://getcomposer.org/download)).
@@ -18,7 +16,7 @@ Login needed to access app's features.
 
 ## Test login details:
 
-E-mail: admin@admin.com
+E-mail: admin@admin.com <br>
 Password: 123456789
 
 **Note:** Only works if **php artisan db:seed** step was not skipped.
