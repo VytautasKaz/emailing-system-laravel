@@ -26,6 +26,13 @@ Route::get('/test-email', [MailController::class, 'sendEmail'])->name('test-emai
 Route::resource('customers', CustomerController::class);
 Route::resource('templates', TemplateController::class);
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/preview', [CustomerController::class, 'preview'])->name('customers.preview');
+    Route::get('/test-email', [MailController::class, 'sendEmail'])->name('test-email');
+    Route::resource('customers', CustomerController::class);
+    Route::resource('templates', TemplateController::class);
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
