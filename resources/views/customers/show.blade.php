@@ -29,6 +29,11 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="">When to send:</label><br>
+                                <input type="date" name="email_date" id="">
+                                <input type="time" name="email_hours" id="">
+                            </div>
                             <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Preview</button>
                         </form>
                     </div>

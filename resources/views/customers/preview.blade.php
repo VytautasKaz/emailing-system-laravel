@@ -31,6 +31,17 @@
                                     @endif
                                 @endforeach
                             </div>
+                            @empty(!$_GET['email_hours'] || !$_GET['email_date'])
+                                <div class="form-group">
+                                    <p>E-mail to be sent:</p>
+                                    @empty(!$_GET['email_hours'])
+                                        <p>At {{ $_GET['email_hours'] }}</p>
+                                    @endempty
+                                    @empty(!$_GET['email_date'])
+                                        <p>On {{ $_GET['email_date'] }} </p>
+                                    @endempty
+                                </div>
+                            @endempty
                             <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Send</button>
                         </form>
                     </div>
