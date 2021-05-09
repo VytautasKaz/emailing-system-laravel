@@ -23,7 +23,7 @@ Password: 123456789
 
 ## Notes:
 
-E-mail sending functionality tested with (https://mailtrap.io/).
+E-mail sending functionality tested with [mailtrap](https://mailtrap.io/).
 
 ## Author:
 
